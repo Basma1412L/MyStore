@@ -20,7 +20,7 @@
 
   <form #form="ngForm" (ngSubmit)="onSubmit()" class="form-container">
     <p>Full Name</p>
-    <input class="form_input" type="text" name="fullname" minlength="3"  required placeholder="minimum 3 charecters" [(ngModel)]="fullname" #blogTitle="ngModel">
+    <input class="form_input" type="text" name="fullname" minlength="3"  required placeholder="minimum 3 charecters" [(ngModel)]="fullname" #fullName="ngModel">
     <p>Address</p>
     <input  class="form_input" type="text" name="address" minlength="6" required placeholder="minimum 6 charecters" [(ngModel)]="address">
     <p>Credit Card Number</p>
@@ -30,8 +30,11 @@
     <button type="submit" [disabled]="form.invalid" >Submit</button>
   </form>
 
-  <div *ngIf="blogTitle.invalid && blogTitle.dirty">
-    <div *ngIf="blogTitle.errors?.['required']">
-      Please provide a title for your blog post.
+  <div *ngIf="fullName.invalid && fullName.dirty">
+    <div *ngIf="fullName.errors?.['required']">
+      Please provide a name.
+    </div>
+    <div *ngIf="fullName.errors?.['minimumlength']">
+      Please provide a name longer that 3 letters.
     </div>
   </div>
