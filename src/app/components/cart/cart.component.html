@@ -1,0 +1,37 @@
+<ul class="product-index">
+    <li class="cart-item-details"  *ngFor="let product of products">  
+        <img src={{product.url}} routerLink="/product/{{product.id}}">
+      <ul>
+        <li>{{product.name}}</li>
+        <li>{{product.currency}}{{product.price}}</li>
+        <li>{{product.description}}</li>
+        <li>
+         <select [value]="product.quantity" class="select-input" (change)="changeProductQuantity($event, product)">
+          <option selected hidden>{{product.quantity}}</option>
+          <option *ngFor="let num of nums">{{num}}</option>
+          </select> 
+        </li>
+          <li><button mat-raised-button color="primary"  (click)="removeFromCart(product)">Remove Item From Cart</button></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p> Total Price: {{ordercost}}</p>
+
+  <form #form="ngForm" (ngSubmit)="onSubmit()" class="form-container">
+    <p>Full Name</p>
+    <input class="form_input" type="text" name="fullname" minlength="3"  required placeholder="minimum 3 charecters" [(ngModel)]="fullname" #blogTitle="ngModel">
+    <p>Address</p>
+    <input  class="form_input" type="text" name="address" minlength="6" required placeholder="minimum 6 charecters" [(ngModel)]="address">
+    <p>Credit Card Number</p>
+    <input class="form_input" type="text" name="creditcard"    minlength="16" maxlength="16" required placeholder="16 digit number" [(ngModel)]="creditcard">
+    <br/>
+    <br/>
+    <button type="submit" [disabled]="form.invalid" >Submit</button>
+  </form>
+
+  <div *ngIf="blogTitle.invalid && blogTitle.dirty">
+    <div *ngIf="blogTitle.errors?.['required']">
+      Please provide a title for your blog post.
+    </div>
+  </div>

@@ -1,0 +1,8 @@
+  <h1>My Store</h1>
+  <ul class="product-index" >
+    <li class="product-index"  *ngFor="let product of products">  
+      <app-product-item [product]="product" [nums]="nums"></app-product-item>
+    </li>
+  </ul>
+
+

@@ -1,0 +1,17 @@
+<ul >
+    <div class="detail-container">  
+        <img class="img" src={{product.url}} routerLink="/product/{{product.id}}">
+      <ul>
+        <li>{{product.name}}</li>
+        <li>{{product.currency}}{{product.price}}</li>
+        <li>{{product.description}}</li>
+        <li>
+         <select class="select-input" (change)="changeProductQuantity($event)">
+          <option *ngFor="let num of nums">{{num}}</option>
+          </select> 
+        </li>
+        <li><button mat-raised-button color="primary"  (click)="addToCart(product)">Add to Cart</button></li>
+      </ul>
+    </div>
+  </ul>
+  <a class="back-link" routerLink="/"> Back to Products List </a>
