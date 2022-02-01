@@ -6,7 +6,7 @@
         <li>{{product.currency}}{{product.price}}</li>
         <li>{{product.description}}</li>
         <li>
-         <select class="select-input" (change)="changeProductQuantity($event)">
+         <select class="select-input"   (ngModelChange)="changeProductQuantity($event)">
           <option *ngFor="let num of nums">{{num}}</option>
           </select> 
         </li>
