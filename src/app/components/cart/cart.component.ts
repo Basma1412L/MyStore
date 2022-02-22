@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
   address: string;
   user: User;
   ordercost: number;
+  currentQuantity: number;
   constructor(private cartService: CartService, private router:Router, private productsService: ProductsService
     ,private userService: UserService) { 
     this.products = this.cartService.getCartProducts();
@@ -41,8 +42,7 @@ export class CartComponent implements OnInit {
   }
 
   changeProductQuantity (event: any, product:Product) {
-    let currentQuantity = event.target.value;
-    this.cartService.addToCart(product, Number(currentQuantity)-Number(product.quantity));
+    this.cartService.addToCart(product, Number(event)-Number(product.quantity));
     this.ordercost = this.cartService.getTotalPrice();
 
   }
@@ -51,5 +51,6 @@ export class CartComponent implements OnInit {
     this.cartService.removeProduct((product.id)-1);
     this.products = this.cartService.getCartProducts();
     this.ordercost = this.cartService.getTotalPrice();
+    alert(`Removed from Cart!`);
   }
 }

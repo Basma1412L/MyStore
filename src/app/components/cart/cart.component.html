@@ -6,8 +6,8 @@
         <li>{{product.currency}}{{product.price}}</li>
         <li>{{product.description}}</li>
         <li>
-         <select [value]="product.quantity" class="select-input"  (ngModelChange)="changeProductQuantity($event, product)">
-          <option selected hidden>{{product.quantity}}</option>
+         <select [value]="product.quantity" class="select-input" [(ngModel)]="product.quantity" (ngModelChange)="changeProductQuantity($event, product)">
+          <option selected>{{product.quantity}}</option>
           <option *ngFor="let num of nums">{{num}}</option>
           </select> 
         </li>
@@ -34,19 +34,19 @@
     <div *ngIf="fullName.errors?.['required']">
       Please provide a name.
     </div>
-    <div *ngIf="fullName.errors?.['minimumlength']">
+    <div *ngIf="fullName.errors?.['minlength']">
       Please provide a name longer that 3 letters.
     </div>
     <div *ngIf="address_.errors?.['required']">
       Please provide an address.
     </div>
-    <div *ngIf="address_.errors?.['minimumlength']">
+    <div *ngIf="address_.errors?.['minlength']">
       Please provide an address longer that 6 letters.
     </div>
     <div *ngIf="creditCard.errors?.['required']">
       Please provide a Creditcard.
     </div>
-    <div *ngIf="creditCard.errors?.['minimumlength']">
+    <div *ngIf="creditCard.errors?.['minlength']">
       Please provide a creditcard equals to 16 letters.
     </div>
   </div>
