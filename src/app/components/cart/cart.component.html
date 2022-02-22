@@ -37,12 +37,16 @@
     <div *ngIf="fullName.errors?.['minlength']">
       Please provide a name longer that 3 letters.
     </div>
+  </div>
+  <div *ngIf="address_.dirty">
     <div *ngIf="address_.errors?.['required']">
       Please provide an address.
     </div>
     <div *ngIf="address_.errors?.['minlength']">
       Please provide an address longer that 6 letters.
     </div>
+  </div>
+  <div *ngIf="creditCard.dirty">
     <div *ngIf="creditCard.errors?.['required']">
       Please provide a Creditcard.
     </div>
